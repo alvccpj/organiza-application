@@ -1,0 +1,69 @@
+/* styles/Home.module.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Para ocupar toda a altura da tela */
+    background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%); /* Gradiente moderno */
+    padding: 20px;
+    color: #fff; /* Texto branco para contraste */
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 40px; /* Espaço abaixo do cabeçalho */
+  }
+  
+  .header h1 {
+    font-size: 3rem; /* Tamanho maior para um título impactante */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); /* Sombra para dar profundidade */
+  }
+  
+  .header p {
+    font-size: 1.2rem; /* Tamanho de fonte para descrição */
+    margin-top: 10px; /* Espaço acima da descrição */
+  }
+  
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaçamento entre os botões */
+    width: 100%; /* Para ocupar toda a largura */
+    max-width: 500px; /* Limite de largura para melhor aparência */
+  }
+  
+  .feature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Mais espaço interno para um botão confortável */
+    font-size: 1.2rem; /* Tamanho de fonte legível */
+    color: #fff;
+    background-color: #ff4081; /* Cor vibrante para os botões */
+    border: none;
+    border-radius: 8px; /* Cantos arredondados */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.3s ease; /* Efeitos suaves */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade */
+  }
+  
+  .feature:hover {
+    background-color: #f50057; /* Cor mais escura ao passar o mouse */
+    transform: translateY(-2px); /* Levanta um pouco o botão */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Sombra mais pronunciada */
+  }
+  
+  .feature:active {
+    transform: translateY(0); /* Retorna à posição normal ao clicar */
+  }
+  
+  .footer {
+    margin-top: auto; /* Para colocar o footer na parte inferior */
+    text-align: center;
+    padding: 20px 0; /* Espaço interno do footer */
+    font-size: 1rem; /* Tamanho de fonte do footer */
+  }
+  
