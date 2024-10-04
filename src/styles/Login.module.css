@@ -1,58 +1,91 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Ocupa a altura total da tela */
-    padding: 20px;
-    background: linear-gradient(135deg, #FFF8E8 0%, #F7EED3 50%, #AAB396 75%, #674636 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Ocupa a altura total da tela */
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    #fff8e8 0%,
+    #f7eed3 50%,
+    #aab396 75%,
+    #674636 100%
+  );
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    max-width: 400px; /* Largura máxima para o formulário */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px; /* Largura máxima para o formulário */
 }
 
 .inputGroup {
-    display: flex;
-    flex-direction: column;
-    color: #674636;
+  display: flex;
+  flex-direction: column;
+  color: #674636;
 }
 
 .label {
-    margin-bottom: 5px; /* Espaço entre o rótulo e o campo de entrada */
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 600;
+  border-radius: 10px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .submitButton {
-    padding: 10px;
-    background-color: #674636; /* Cor de fundo do botão */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px;
+  background-color: #674636; /* Cor de fundo do botão */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .submitButton:hover {
-    background-color: #AAB396; /* Cor mais clara ao passar o mouse */
+  background-color: #aab396; /* Cor mais clara ao passar o mouse */
+}
+
+.backButton {
+  padding: 10px;
+  background-color: #674636;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px; /* Espaço acima do botão */
+  width: 100%;
+  max-width: 400px;
+}
+
+.backButton:hover {
+  background-color: #aab396; /* Cor mais escura ao passar o mouse */
 }
 
 .toggleText {
-    margin-top: 15px; /* Espaço acima do texto de alternância */
-    text-align: center; /* Centraliza o texto */
-    color: #674636;
+  margin-top: 15px; /* Espaço acima do texto de alternância */
+  text-align: center; /* Centraliza o texto */
+  color: #674636;
 }
 
 .toggleLink {
-    color: #674636; /* Cor do link */
-    cursor: pointer;
-    text-decoration: underline; /* Sublinha o texto */
+  color: #674636; /* Cor do link */
+  cursor: pointer;
+  text-decoration: underline; /* Sublinha o texto */
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
