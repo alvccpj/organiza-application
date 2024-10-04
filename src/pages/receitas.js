@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useRouter } from "next/router"; // Importar useRouter
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import styles from "../styles/Receitas.module.css";
 
 const Receitas = () => {
@@ -10,13 +10,33 @@ const Receitas = () => {
   const [registros, setRegistros] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
-  const router = useRouter(); // Inicializar useRouter
+  const [error, setError] = useState(""); // Estado para mensagens de erro
+  const router = useRouter();
+
+  useEffect(() => {
+    const storedRegistros = localStorage.getItem("registros");
+    if (storedRegistros) {
+      setRegistros(JSON.parse(storedRegistros));
+    }
+  }, []);
+
+  const saveRegistrosToLocalStorage = (updatedRegistros) => {
+    localStorage.setItem("registros", JSON.stringify(updatedRegistros));
+  };
 
   const handleAddRegistro = () => {
+    // Verificar se todos os campos estão preenchidos
+    if (!data || !valor || !descricao || !categoria) {
+      setError("Por favor, preencha todos os campos."); // Define a mensagem de erro
+      return; // Impede a adição do registro
+    }
+
+    setError(""); // Limpa a mensagem de erro se todos os campos estão preenchidos
+
+    let updatedRegistros;
     if (isEditing) {
-      const updatedRegistros = [...registros];
+      updatedRegistros = [...registros];
       updatedRegistros[editIndex] = { data, valor, descricao, categoria };
-      setRegistros(updatedRegistros);
       setIsEditing(false);
       setEditIndex(null);
     } else {
@@ -26,8 +46,11 @@ const Receitas = () => {
         descricao,
         categoria,
       };
-      setRegistros([...registros, novoRegistro]);
+      updatedRegistros = [...registros, novoRegistro];
     }
+
+    setRegistros(updatedRegistros);
+    saveRegistrosToLocalStorage(updatedRegistros);
 
     setData("");
     setValor("");
@@ -48,10 +71,11 @@ const Receitas = () => {
   const handleDeleteRegistro = (index) => {
     const updatedRegistros = registros.filter((_, i) => i !== index);
     setRegistros(updatedRegistros);
+    saveRegistrosToLocalStorage(updatedRegistros);
   };
 
   const handleBack = () => {
-    router.push("/"); // Volta para a página inicial
+    router.push("/");
   };
 
   return (
@@ -67,8 +91,7 @@ const Receitas = () => {
           onChange={(e) => setData(e.target.value)}
           className={styles.input}
         />
-
-        <label htmlFor="valor">Valor:</label>
+        <label htmlFor="valor">Valor(R$):</label>
         <input
           type="number"
           id="valor"
@@ -76,7 +99,6 @@ const Receitas = () => {
           onChange={(e) => setValor(e.target.value)}
           className={styles.input}
         />
-
         <label htmlFor="descricao">Descrição:</label>
         <input
           type="text"
@@ -85,7 +107,6 @@ const Receitas = () => {
           onChange={(e) => setDescricao(e.target.value)}
           className={styles.input}
         />
-
         <label htmlFor="categoria">Categoria:</label>
         <select
           id="categoria"
@@ -97,12 +118,11 @@ const Receitas = () => {
           <option value="receita">Receita</option>
           <option value="despesa">Despesa</option>
         </select>
-
+        {error && <p className={styles.error}>{error}</p>}{" "}
+        {/* Mensagem de erro */}
         <button onClick={handleAddRegistro} className={styles.button}>
           {isEditing ? "Salvar Alterações" : "Adicionar Registro"}
         </button>
-
-        {/* Botão de voltar */}
         <button onClick={handleBack} className={styles.backButton}>
           Voltar à página inicial
         </button>

@@ -14,6 +14,14 @@
   );
 }
 
+.title {
+  font-size: 2.5rem; /* Tamanho da fonte */
+  color: #000000; /* Cor do texto */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  text-align: center; /* Centraliza o título */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* Sombra do texto */
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -88,4 +96,34 @@
   font-size: 0.9rem;
   margin-top: -10px;
   margin-bottom: 10px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem; /* Tamanho da fonte para telas menores */
+  }
+
+  .label {
+    font-size: 1.2rem; /* Tamanho da fonte para labels em telas menores */
+  }
+
+  .input {
+    padding: 8px; /* Menos padding em telas menores */
+  }
+
+  .submitButton,
+  .backButton {
+    padding: 8px; /* Menos padding em telas menores */
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem; /* Ajuste de tamanho para tablets */
+  }
+
+  .label {
+    font-size: 1.4rem; /* Tamanho da fonte para labels em tablets */
+  }
 }

@@ -51,7 +51,8 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
-      <h1>{isLogin ? "Login" : "Registro"}</h1>
+      <h1 className={styles.title}>{isLogin ? "Login" : "Registro"}</h1>{" "}
+      {/* Título principal */}
       <form onSubmit={handleSubmit} className={styles.form}>
         {!isLogin && (
           <div className={styles.inputGroup}>
@@ -99,14 +100,12 @@ const Login = () => {
           {isLogin ? "Entrar" : "Registrar"}
         </button>
       </form>
-
       {/* Novo botão para voltar à página inicial */}
       <button onClick={handleBackToHome} className={styles.backButton}>
         Voltar à página inicial
       </button>
-
       <p className={styles.toggleText}>
-        {isLogin ? "Não tem uma conta? " : "Já tem uma conta? "}
+        {isLogin ? "Não tem uma conta? " : "Já tem uma conta? "} 
         <span
           onClick={() => setIsLogin(!isLogin)}
           className={styles.toggleLink}
