@@ -1,0 +1,117 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff8e8 0%, #f7eed3 50%, #aab396 75%, #674636 100%);
+    padding: 20px;
+    color: #000000;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .input {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #674636;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #aab396;
+  }
+
+  .backButton {
+    padding: 10px;
+    background-color: #674636;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px; /* Espaço acima do botão */
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .backButton:hover {
+    background-color: #aab396; /* Cor mais escura ao passar o mouse */
+  }
+  
+  .registros {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .registros h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .registro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f7eed3;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .editButton,
+  .deleteButton {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .editButton {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .editButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .deleteButton {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .deleteButton:hover {
+    background-color: #b02a37;
+  }
+  
