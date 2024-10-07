@@ -1,4 +1,14 @@
 import { useState, useEffect } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 import styles from "../styles/Painel.module.css";
 
 const Painel = () => {
@@ -36,6 +46,24 @@ const Painel = () => {
     fetchData();
   }, []);
 
+  // Preparar os dados para o gráfico
+  const data = [
+    {
+      name: "Receitas",
+      valor: receitasRecentes.reduce(
+        (acc, receita) => acc + parseFloat(receita.valor),
+        0
+      ),
+    },
+    {
+      name: "Despesas",
+      valor: despesasRecentes.reduce(
+        (acc, despesa) => acc + parseFloat(despesa.valor),
+        0
+      ),
+    },
+  ];
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Painel Financeiro</h1>
@@ -43,11 +71,11 @@ const Painel = () => {
       {/* Visão geral */}
       <div className={styles.overview}>
         <div className={styles.card}>
-          <h2>Saldo Atual</h2>
-          <p>R$ {saldoAtual.toFixed(2)}</p>
+          <h2 className={styles.h2}>Saldo Atual</h2>
+          <p className={styles.saldo}>R$ {saldoAtual.toFixed(2)}</p>
         </div>
         <div className={styles.card}>
-          <h2>Receitas Recentes</h2>
+          <h2 className={styles.h2}>Receitas Recentes</h2>
           <ul className={styles.ul}>
             {receitasRecentes.map((receita, index) => (
               <li key={index} className={styles.li}>
@@ -58,7 +86,7 @@ const Painel = () => {
           </ul>
         </div>
         <div className={styles.card}>
-          <h2>Despesas Recentes</h2>
+          <h2 className={styles.h2}>Despesas Recentes</h2>
           <ul className={styles.ul}>
             {despesasRecentes.map((despesa, index) => (
               <li key={index} className={styles.li}>
@@ -70,14 +98,22 @@ const Painel = () => {
         </div>
       </div>
 
-      {/* Gráficos e Relatórios */}
+      {/* Gráfico de Receitas e Despesas */}
       <div className={styles.reports}>
-        <h2>Relatórios e Estatísticas</h2>
-        <p>Gráfico de receitas e despesas:</p>
-        <div className={styles.grafico}>
-          {/* Placeholder para o gráfico */}
-          <p>Gráfico de Receita x Despesa</p>
-        </div>
+        <h2>Gráfico de Receita x Despesa</h2>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart
+            data={data}
+            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="valor" fill="#82ca9d" />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
 
       {/* Análise de Tendências */}
@@ -89,6 +125,9 @@ const Painel = () => {
           períodos.
         </p>
       </div>
+      <footer className={styles.footer}>
+        <p>&copy; 2024 Organiza. Todos os direitos reservados.</p>
+      </footer>
     </div>
   );
 };
