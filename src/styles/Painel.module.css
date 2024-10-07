@@ -100,12 +100,12 @@
   margin-top: 15px; /* Espaço acima do botão */
   width: 100%;
   max-width: 400px;
+  margin-bottom: 50px;
 }
 
 .backButton:hover {
   background-color: #aab396; /* Cor mais escura ao passar o mouse */
 }
-
 
 .footer {
   position: fixed;
@@ -119,7 +119,6 @@
   z-index: 1000; /* Certifique-se de que o footer esteja acima de outros elementos */
   color: #000000;
 }
-
 
 /* Estilos responsivos */
 @media (max-width: 600px) {

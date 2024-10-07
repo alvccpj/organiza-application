@@ -9,12 +9,15 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { useRouter } from "next/router"; // Importa o hook useRouter para a navegação
 import styles from "../styles/Painel.module.css";
 
 const Painel = () => {
   const [saldoAtual, setSaldoAtual] = useState(0);
   const [receitasRecentes, setReceitasRecentes] = useState([]);
   const [despesasRecentes, setDespesasRecentes] = useState([]);
+
+  const router = useRouter(); // Inicializa o hook useRouter
 
   useEffect(() => {
     const fetchData = () => {
@@ -63,6 +66,11 @@ const Painel = () => {
       ),
     },
   ];
+
+  // Função para voltar à página inicial
+  const handleBack = () => {
+    router.push("/"); // Redireciona para a página inicial
+  };
 
   return (
     <div className={styles.container}>
@@ -116,15 +124,11 @@ const Painel = () => {
         </ResponsiveContainer>
       </div>
 
-      {/* Análise de Tendências */}
-      <div className={styles.analysis}>
-        <h2>Análise de Tendências</h2>
-        <p>
-          Aqui você pode exibir uma análise das suas finanças ao longo do tempo,
-          mostrando como suas receitas e despesas variaram em diferentes
-          períodos.
-        </p>
-      </div>
+      {/* Botão de Voltar */}
+      <button className={styles.backButton} onClick={handleBack}>
+        Voltar à Página Inicial
+      </button>
+
       <footer className={styles.footer}>
         <p>&copy; 2024 Organiza. Todos os direitos reservados.</p>
       </footer>
