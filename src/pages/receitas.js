@@ -133,9 +133,17 @@ const Receitas = () => {
         <ul>
           {registros.map((registro, index) => (
             <li key={index} className={styles.registro}>
-              <span>{registro.data}</span> - <span>{registro.valor}</span> -{" "}
-              <span>{registro.descricao}</span> -{" "}
-              <span>{registro.categoria}</span>
+              <span>{registro.data}</span> -{" "}
+              <span>R$ {parseFloat(registro.valor).toFixed(2)}</span> -{" "}
+              <span>
+                {registro.descricao.charAt(0).toUpperCase() +
+                  registro.descricao.slice(1)}
+              </span>{" "}
+              -{" "}
+              <span>
+                {registro.categoria.charAt(0).toUpperCase() +
+                  registro.categoria.slice(1)}
+              </span>
               <div className={styles.actions}>
                 <button
                   onClick={() => handleEditRegistro(index)}
@@ -154,6 +162,9 @@ const Receitas = () => {
           ))}
         </ul>
       </div>
+      <footer className={styles.footer}>
+        <p>&copy; 2024 Organiza. Todos os direitos reservados.</p>
+      </footer>
     </div>
   );
 };

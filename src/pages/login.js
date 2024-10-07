@@ -105,7 +105,7 @@ const Login = () => {
         Voltar à página inicial
       </button>
       <p className={styles.toggleText}>
-        {isLogin ? "Não tem uma conta? " : "Já tem uma conta? "} 
+        {isLogin ? "Não tem uma conta? " : "Já tem uma conta? "}
         <span
           onClick={() => setIsLogin(!isLogin)}
           className={styles.toggleLink}
@@ -113,6 +113,9 @@ const Login = () => {
           {isLogin ? "Registrar" : "Entrar"}
         </span>
       </p>
+      <footer className={styles.footer}>
+        <p>&copy; 2024 Organiza. Todos os direitos reservados.</p>
+      </footer>
     </div>
   );
 };

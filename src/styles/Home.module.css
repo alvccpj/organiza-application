@@ -13,6 +13,7 @@
   );
   padding: 20px;
   color: #000000;
+  margin-bottom: 20px;
 }
 
 .header {
@@ -80,16 +81,22 @@
   line-height: 1.4;
 }
 
+/* styles/Home.module.css */
+
 .footer {
-  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #aab396; /* Altere para a cor que preferir */
   text-align: center;
-  font-size: 1rem;
-  margin-top: 20px;
-  color: #333;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 10px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Certifique-se de que o footer esteja acima de outros elementos */
+}
+
+.container {
+  padding-bottom: 60px; /* Adicione espaço inferior para evitar sobreposição */
 }
 
 /* Media Queries para responsividade */
