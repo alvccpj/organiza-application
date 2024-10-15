@@ -15,8 +15,11 @@
 
 .title {
   font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #2c3e50;
+  color: #000000;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .form {
@@ -29,45 +32,35 @@
 
 .input {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
   border-radius: 5px;
   font-size: 1rem;
+  color: black;
 }
 
-.addButton {
+.addButton, .backButton {
   padding: 10px;
   background-color: #674636;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 15px;
 }
 
-.addButton:hover {
+.addButton:hover, .backButton:hover {
   background-color: #aab396;
 }
 
-.backButton {
-  padding: 10px;
-  background-color: #674636;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 15px; /* Espaço acima do botão */
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 50px;
-}
-
-.backButton:hover {
-  background-color: #aab396; /* Cor mais escura ao passar o mouse */
-}
-
 .subtitle {
-  font-size: 1.8rem;
-  margin-top: 30px;
-  color: #2c3e50;
+  font-size: 2rem;
+  color: #000000;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .ul {
@@ -84,4 +77,67 @@
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #aab396;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  color: #000000;
+}
+
+/* Media Queries para tablets */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .addButton, .backButton {
+    font-size: 0.9rem;
+  }
+}
+
+/* Media Queries para celulares */
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+  }
+
+  .input {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+
+  .addButton, .backButton {
+    font-size: 0.8rem;
+    margin-top: 10px;
+  }
+
+  .li {
+    padding: 10px;
+  }
+
+  .footer {
+    padding: 8px 0;
+  }
 }

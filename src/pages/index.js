@@ -49,7 +49,7 @@ const Home = () => {
         </button>
         <button
           className={styles.feature}
-          onClick={() => navigateTo("/orcamento")}
+          onClick={() => navigateTo("/orcamentos")}
         >
           <h2>Orçamento</h2>
           <p>Defina e acompanhe seu orçamento mensal e anual.</p>
