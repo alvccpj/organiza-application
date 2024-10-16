@@ -24,34 +24,45 @@ export default function Orcamentos() {
 
   const adicionarOrcamento = () => {
     if (categoria && meta) {
-      const novoOrcamento = { categoria, meta: parseFloat(meta), gasto: 0 };
+      const novoOrcamento = {
+        categoria,
+        meta: parseFloat(meta),
+        receita: 0,
+        despesa: 0,
+      };
       setOrcamentos([...orcamentos, novoOrcamento]);
       setCategoria("");
       setMeta("");
     }
   };
 
-  const atualizarGasto = (index, valor) => {
+  const atualizarValor = (index, tipo, valor) => {
     const novoOrcamento = [...orcamentos];
-    novoOrcamento[index].gasto += parseFloat(valor);
+    const valorNumerico = parseFloat(valor) || 0;
+    novoOrcamento[index][tipo] += valorNumerico;
     setOrcamentos(novoOrcamento);
     verificarAlertas(novoOrcamento);
   };
 
   const verificarAlertas = (orcamentosAtualizados) => {
     const novosAlertas = orcamentosAtualizados
-      .filter((o) => o.gasto >= o.meta * 0.8) // Alerta para gastos acima de 80%
-      .map((o) =>
-        o.gasto >= o.meta
-          ? `Atenção: Orçamento para ${o.categoria} foi excedido!`
-          : `Aviso: Gastos com ${o.categoria} estão em 80% ou mais do orçamento.`
-      );
+      .map((o) => {
+        const saldoDisponivel = o.meta + o.receita - o.despesa;
+        const percentualGasto = (o.despesa / (o.meta + o.receita)) * 100;
+
+        if (percentualGasto >= 100) {
+          return `⚠️ Atenção: Orçamento para ${o.categoria} foi excedido!`;
+        } else if (percentualGasto >= 80) {
+          return `🔔 Aviso: Gastos com ${o.categoria} atingiram 80% ou mais do orçamento disponível.`;
+        }
+        return null;
+      })
+      .filter((alerta) => alerta !== null);
+
     setAlertas(novosAlertas);
   };
 
-  const handleBack = () => {
-    router.push("/"); // Redireciona para a página inicial
-  };
+  const handleBack = () => router.push("/");
 
   return (
     <div className={styles.container}>
@@ -86,11 +97,18 @@ export default function Orcamentos() {
           <li key={index} className={styles.li}>
             <span>{orc.categoria}</span>
             <span>Meta: R${orc.meta.toFixed(2)}</span>
-            <span>Gasto: R${orc.gasto.toFixed(2)}</span>
+            <span>Receita: R${orc.receita.toFixed(2)}</span>
+            <span>Despesa: R${orc.despesa.toFixed(2)}</span>
             <input
               type="number"
-              placeholder="Adicionar Gasto"
-              onChange={(e) => atualizarGasto(index, e.target.value)}
+              placeholder="Adicionar Receita"
+              onChange={(e) => atualizarValor(index, "receita", e.target.value)}
+              className={styles.input}
+            />
+            <input
+              type="number"
+              placeholder="Adicionar Despesa"
+              onChange={(e) => atualizarValor(index, "despesa", e.target.value)}
               className={styles.input}
             />
           </li>
